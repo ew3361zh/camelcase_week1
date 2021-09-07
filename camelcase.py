@@ -19,26 +19,40 @@ def welcome():
     stars = '*' * len(message)
     print(f'\n{stars} \n{message} \n{stars} \n')
 
-welcome()
-print('This program turns a string sentence of separate words into a single camel case string\n')
-sentence = input('Please enter a sentence to be turned into a camel case string: ')
-# check for characters we don't want
-sentence_regex = re.compile(r'[0-9#+"]+')
-sentence_found = sentence_regex.search(sentence)
-# add while loop to catch all sentence entries that match this bad pattern of unwanted characters/numbers
-while sentence_found is not None:
-    sentence = input('Please try again to enter a sentence - don\'t use any numbers or any non-letter characters like (" + #): ')
-    sentence_found = sentence_regex.search(sentence)
-sentence_list = sentence.split()
-# create empty string to build final camelcase string into
-final_sentence = ''
-# use for loop to go through list of sentence pieces numerically
-for sentence_piece in range(len(sentence_list)):
-    # start with first piece of sentence and make it all lowercase
-    if sentence_piece == 0:
-        final_sentence = sentence_list[sentence_piece].lower()
-    # for all other pieces, make them lowercase and then title-cased
-    else:
-        final_sentence = final_sentence + sentence_list[sentence_piece].lower().title()
+def instructions():
+    """Give instructions to user for how program works"""
+    print('Instructions: Enter a sentence and this program will convert it to a single camel case string\n')
 
-print(final_sentence)
+def get_sentence():
+    sentence = input('Please enter a sentence: ')
+    while not sentence:
+        sentence = input('You have to enter something here: ')
+    return sentence
+
+def main():
+    welcome()
+    instructions()
+    sentence = get_sentence()
+    # check for characters we don't want
+    sentence_regex = re.compile(r'[0-9#+"]+')
+    sentence_found = sentence_regex.search(sentence)
+    # add while loop to catch all sentence entries that match this bad pattern of unwanted characters/numbers
+    while sentence_found is not None:
+        print('Please try again to enter a sentence - don\'t use any numbers or any non-letter characters like (" + #)')
+        sentence = get_sentence()
+        sentence_found = sentence_regex.search(sentence)
+    sentence_list = sentence.split()
+    # create empty string to build final camelcase string into
+    final_sentence = ''
+    # use for loop to go through list of sentence pieces numerically
+    for sentence_piece in range(len(sentence_list)):
+        # start with first piece of sentence and make it all lowercase
+        if sentence_piece == 0:
+            final_sentence = sentence_list[sentence_piece].lower()
+        # for all other pieces, make them lowercase and then title-cased
+        else:
+            final_sentence = final_sentence + sentence_list[sentence_piece].lower().title()
+
+    print(final_sentence)
+
+main()
