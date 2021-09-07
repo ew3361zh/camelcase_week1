@@ -13,7 +13,14 @@ Test your program with different example inputs, and comment your code.
 """
 import re
 
-print('This program turns a string sentence of separate words into a single camel case string')
+def welcome():
+    """Display welcome message"""
+    message = 'Welcome my friend!'
+    stars = '*' * len(message)
+    print(f'\n{stars} \n{message} \n{stars} \n')
+
+welcome()
+print('This program turns a string sentence of separate words into a single camel case string\n')
 sentence = input('Please enter a sentence to be turned into a camel case string: ')
 # check for characters we don't want
 sentence_regex = re.compile(r'[0-9#+"]+')
