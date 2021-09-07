@@ -14,7 +14,7 @@ Test your program with different example inputs, and comment your code.
 import re
 
 def welcome():
-    """Display welcome message"""
+    """Display welcome message, using stars"""
     message = 'Welcome my friend!'
     stars = '*' * len(message)
     print(f'\n{stars} \n{message} \n{stars} \n')
@@ -24,6 +24,7 @@ def instructions():
     print('Instructions: Enter a sentence and this program will convert it to a single camel case string\n')
 
 def get_sentence():
+    """Ask for user input on sentence, make sure it's not blank"""
     sentence = input('Please enter a sentence: ')
     while not sentence:
         sentence = input('You have to enter something here: ')
