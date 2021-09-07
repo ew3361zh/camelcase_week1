@@ -1,4 +1,6 @@
 """ 
+Niko Tomlinson week 1 8/25/21 Capstone project, revisited 9/6/21 for practice on git functions and processes
+
 Write a program that turns a sentence into camel case. The first word is lowercase, 
 the rest of the words have their initial letter capitalized, and all of the words 
 are joined together. For example, with the input "fOnt proCESSOR and ParsER", 
